@@ -5,11 +5,9 @@ class EspruinoInput < Input
   config_param :baud_rate, :integer
   config_param :tag, :string, :default => "espruino"
   config_param :eol, :string, :default => $/
-  config_param :json, :bool, :default => false
 
   def initialize
     require 'serialport'
-    require 'json'
     super
   end
 
@@ -20,12 +18,12 @@ class EspruinoInput < Input
 
   def start
     @serial = SerialPort.new(@com_port, @baud_rate, 8, 1, SerialPort::NONE)
-    @serial.write('echo(0)')
+    @serial.write("echo(0)")
     @thread = Thread.new(&method(:run))
   end
 
   def shutdown
-    @serial.write('echo(1)')
+    @serial.write("echo(1)")
     @serial.close
     @thread.join
   end
@@ -34,8 +32,7 @@ class EspruinoInput < Input
     loop do
       unless @serial.closed?
         begin
-          data = @serial.readline(@eol)
-          if @json data = JSON.parse(data)
+          data = JSON.parse(@serial.readline(@eol))
           Engine.emit(@tag, Engine.now, data)
         rescue
           STDERR.puts caller()
