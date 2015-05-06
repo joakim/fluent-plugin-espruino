@@ -24,7 +24,7 @@ unless ENV.has_key?('VERBOSE')
   $log = nulllogger
 end
 
-require 'fluent/plugin/in_serialport'
+require 'fluent/plugin/in_espruino'
 
 class Test::Unit::TestCase
 end

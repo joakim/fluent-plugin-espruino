@@ -1,6 +1,6 @@
 module Fluent
-class SerialPortInput < Input
-  Plugin.register_input('serialport', self)
+class EspruinoInput < Input
+  Plugin.register_input('espruino', self)
   config_param :com_port, :string
   config_param :baud_rate, :integer
   config_param :tag, :string, :default => "serial"
@@ -19,10 +19,12 @@ class SerialPortInput < Input
 
   def start
     @serial = SerialPort.new(@com_port, @baud_rate, 8, 1, SerialPort::NONE)
+    @serial.write('echo(0)')
     @thread = Thread.new(&method(:run))
   end
 
   def shutdown
+    @serial.write('echo(1)')
     @serial.close
     @thread.join
   end

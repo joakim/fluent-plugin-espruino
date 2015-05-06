@@ -2,13 +2,13 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "fluent-plugin-serialport"
-  s.version     = "0.0.3"
-  s.authors     = ["MATSUMOTO Katsuyoshi"]
-  s.email       = ["github@katsyoshi.org"]
-  s.homepage    = "https://github.com/katsyoshi/fluent-plugin-serialport"
-  s.summary     = "fluentd plugin for serial port"
-  s.description = "fluentd plugin for serial port"
+  s.name        = "fluent-plugin-espruino"
+  s.version     = "0.0.1"
+  s.authors     = ["Joakim Stai"]
+  s.email       = ["joakimstai@gmail.com"]
+  s.homepage    = "https://github.com/joakim/fluent-plugin-espruino"
+  s.summary     = "Fluentd plugin for Espruino"
+  s.description = "Fluentd plugin for Espruino"
   s.license     = "Apache License, Version 2.0"
   s.has_rdoc = false
 
