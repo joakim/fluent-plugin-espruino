@@ -1,4 +1,4 @@
-= Espruino Fluent plugin
+= Espruino Fluentd plugin
 
 fluent-plugin-espruino provides an {Espruino}[http://www.espruino.com/] input plugin for {Fluentd}[http://fluentd.org].
 
