@@ -1,22 +1,22 @@
-= fluent plugin serialport
+= Espruino Fluent plugin
 
-fluent-plugin-serialport provides input plugin for {Fluentd}[http://fluentd.org].
+fluent-plugin-espruino provides an {Espruino}[http://www.espruino.com/] input plugin for {Fluentd}[http://fluentd.org].
 
 = Install
 
-  gem install fluent-plugin-serialport
+  gem install fluent-plugin-espruino
 
 or
 
-  git clone git@github.com:katsyoshi/fluent-plugin-serialport.git
-  cp fluent-plugin-serialport/lib/fluent/plugin/flent-plugin-serial.rb ${FLUENT_DIR}/plugin/.
+  git clone git@github.com:joakim/fluent-plugin-espruino.git
+  cp fluent-plugin-espruino/lib/fluent/plugin/flent-plugin-espruino.rb ${FLUENT_DIR}/plugin/.
 
 == Configuration
 
 === Input Configuration
 
   <source>
-    type serialport
+    type espruino
     com_port /path/to/comport
     tag serial.sensor
     baud_rate 9600
@@ -29,5 +29,5 @@ or
 
 = Copyright
 
-Copyright:: Copyright (c) 2012- MATSUMOTO Katsuyoshi
+Copyright:: Copyright (c) 2015- Joakim Stai
 License:: Apache License, Version 2.0
