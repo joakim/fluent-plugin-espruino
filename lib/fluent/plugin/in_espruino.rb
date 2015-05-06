@@ -3,7 +3,7 @@ class EspruinoInput < Input
   Plugin.register_input('espruino', self)
   config_param :com_port, :string
   config_param :baud_rate, :integer
-  config_param :tag, :string, :default => "serial"
+  config_param :tag, :string, :default => "espruino"
   config_param :eol, :string, :default => $/
   config_param :include_time, :bool, :default => false
 
