@@ -5,10 +5,11 @@ class EspruinoInput < Input
   config_param :baud_rate, :integer
   config_param :tag, :string, :default => "espruino"
   config_param :eol, :string, :default => $/
-  config_param :include_time, :bool, :default => false
+  config_param :json, :bool, :default => false
 
   def initialize
     require 'serialport'
+    require 'json'
     super
   end
 
@@ -33,8 +34,8 @@ class EspruinoInput < Input
     loop do
       unless @serial.closed?
         begin
-          timenow = @include_time ? Time.now.to_s << ' ' : ''
-          data = {@device => timenow << @serial.readline(@eol)}
+          data = @serial.readline(@eol)
+          if @json data = JSON.parse(data)
           Engine.emit(@tag, Engine.now, data)
         rescue
           STDERR.puts caller()
